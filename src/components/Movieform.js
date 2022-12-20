@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Movieform() {
   const [error, setError] = useState(false);
-  const array = [];
+  const array = []
+  
+
+
   //  GET INPUT FIELD VALUES
   const submitForm = (e) => {
     e.preventDefault();
@@ -20,12 +23,15 @@ function Movieform() {
     array.push({
       name: name,
       ratings: ratings,
-      time: time,
+      // time: time,
       duration: duration,
     });
 
-    console.log("Array", array);
+    
     document.getElementById("movieform").reset();
+    localStorage.setItem("array", JSON.stringify(array));
+
+   
   };
 
   return (
@@ -47,7 +53,6 @@ function Movieform() {
               id="name"
               placeholder="Enter Movie Name"
               data-testid="nameInput"
-              // onChange={getInfo}
               required
             />
           </div>
@@ -60,7 +65,6 @@ function Movieform() {
               id="ratings"
               placeholder="Enter Rating on a scale of 1 to 100"
               data-testid="ratingsInput"
-              // onChange={getInfo}
               required
             />
           </div>
@@ -73,7 +77,6 @@ function Movieform() {
               id="duration"
               placeholder="Enter duration in hours or minutes"
               data-testid="durationInput"
-              // onChange={getInfo}
             />
           </div>
           {/* Use this div when time format is invalid */}

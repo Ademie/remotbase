@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Search() {
-  // function searchMovie() {
-  //   const array = localStorage.getItem('array') ? JSON.parse(localStorage.getItem("array")) : [];
-  //   const search = document.getElementById("search").value;
+  const [search, setSearch] = useState("");
+  {
+    search
+      ? localStorage.setItem("search", JSON.stringify(search))
+      : localStorage.setItem("search", JSON.stringify(""));
+  }
 
-    // const result = array.find(function(movie, index){
-    //   if(movie.name <= search.slice(1,2)){
-    //     return movie
-    //   }
-    // })
-  //   const result = array.filter(function(movie){
-  //     return movie.name <= search.slice(1,2)
-  //   })
-
-  //   console.log(result)
-
-  // }
+  function filter(e){
+    const DATA = localStorage.getItem()
+  }
   return (
     <section className="layout-row justify-content-center mb-40">
       <input
@@ -25,7 +19,8 @@ function Search() {
         className="w-75 py-2"
         data-testid="search"
         id="search"
-        // onChange={searchMovie}
+        // onChange={(e) => setSearch(e.target.value)}
+        onChange={filter}
       />
     </section>
   );
